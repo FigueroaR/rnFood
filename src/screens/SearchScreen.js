@@ -1,18 +1,33 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import SearchBar from '../components/SearchBar'
+import yelp from '../api/yelp';
 
 const SearchScreen = () => {
     const [term, setTerm] = useState('');
-    console.log(term)
+    const [results, setResults] = useState([])
+
+    // we can make this async
+    // instead of using .then 
+    const searchApi = async () => {
+       const response = await  yelp.get('/search', {
+           params: {
+               limit: 50,
+               term,
+               location: 'san jose'
+           }
+       })
+       setResults(response.data.businesses)
+    }
+    //console.log(term)
     return(
         <View>
             <SearchBar 
                 term={term} 
-                onTermChange={ (newTerm) => setTerm(newTerm)}
-                onTermSubmit={() => console.log('Submitted')}    
+                onTermChange={setTerm}
+                onTermSubmit={() => searchApi()}    
             />
-            <Text>Search Screen, {term}</Text>
+            <Text>We have found {results.length} results </Text>
             
         </View>
     )
