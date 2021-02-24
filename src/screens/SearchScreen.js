@@ -34,7 +34,7 @@ const SearchScreen = () => {
             <SearchBar 
                 term={term} 
                 onTermChange={setTerm}
-                onTermSubmit={() => searchApi()}    
+                onTermSubmit={() => searchApi(term)}    
             />
             <Text>We have found {results.length} results </Text>
             
