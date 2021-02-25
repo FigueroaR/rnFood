@@ -4,7 +4,7 @@ import ResultsDetail from './ResultsDetails'
 
 const ResultsList = ({title, results}) => {
     //console.log(results)
-    return (<View>
+    return (<View style={styles.containerStyle}>
         <Text style={styles.titleStyle}>{title}</Text>
         <FlatList
             horizontal //vert is default so hor
@@ -22,7 +22,12 @@ const ResultsList = ({title, results}) => {
 const styles = StyleSheet.create({
     titleStyle: {
         fontSize: 18,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginLeft: 15,
+        marginBottom: 5
+    },
+    containerStyle: {
+        marginBottom: 10
     }
 })
 
