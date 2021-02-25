@@ -1,11 +1,18 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, FlatList} from 'react-native'
 
 const ResultsList = ({title, results}) => {
     //console.log(results)
     return (<View>
         <Text style={styles.titleStyle}>{title}</Text>
-        <Text>results{results.length}</Text>
+        <FlatList
+            horizontal //vert is default so hor
+            data={results}
+            keyExtractor={(result) => result.id}
+            renderItem={({item}) => {
+                return <Text>{item.name}  </Text>
+            }}
+        />
     </View>)
 }
 
