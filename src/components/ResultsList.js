@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native'
 import ResultsDetail from './ResultsDetails'
+import {withNavigation } from 'react-navigation' // special function for nav
 
 const ResultsList = ({title, results, navigation}) => {
     //console.log(results)
@@ -31,4 +32,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ResultsList;
+export default withNavigation(ResultsList);
+// we export this function with naviagtion included
